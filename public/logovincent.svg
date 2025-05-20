@@ -2,9 +2,9 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="210mm"
-   height="210mm"
-   viewBox="0 0 210 210"
+   width="250"
+   height="250"
+   viewBox="0 0 66.145833 66.145832"
    version="1.1"
    id="svg1"
    inkscape:version="1.4 (86a8ad7, 2024-10-11)"
@@ -71,13 +71,12 @@
      inkscape:groupmode="layer"
      id="layer2"
      inkscape:label="fondo">
-    <ellipse
-       style="fill:#2e2e2e;fill-opacity:1;stroke:#000000;stroke-width:5.69881;stroke-linecap:butt;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+    <circle
+       style="fill:#2e2e2e;fill-opacity:1;stroke:#000000;stroke-width:1.81376;stroke-linecap:butt;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
        id="path23"
-       ry="101.00307"
-       rx="99.36319"
-       cy="104.95215"
-       cx="104.93468" />
+       cy="33.526382"
+       cx="32.962284"
+       r="31.884241" />
   </g>
   <g
      inkscape:label="Capa 1"
@@ -85,7 +84,7 @@
      id="layer1">
     <text
        xml:space="preserve"
-       transform="matrix(17.258353,0,0,18.743061,-2765.808,-5854.7063)"
+       transform="matrix(6.7436896,0,0,6.7042787,-1088.2141,-2096.969)"
        id="text1"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:'Berlin Sans FB';-inkscape-font-specification:'Berlin Sans FB, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect1);display:inline;fill:url(#linearGradient21);stroke:#000000;stroke-width:0.304932;stroke-linecap:butt;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"><tspan
          x="162.52344"
