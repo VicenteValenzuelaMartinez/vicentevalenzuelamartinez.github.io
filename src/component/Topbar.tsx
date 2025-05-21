@@ -1,8 +1,11 @@
 import { useLocation } from "react-router-dom";
 import { pageNavigation } from "./SidebarMenu";
 import { match } from "ts-pattern";
+import { useTranslation } from "react-i18next";
+// import { Cog6ToothIcon } from "@heroicons/react/24/outline";
 
 const TopBar = () => {
+    const { t } = useTranslation();
   const location = useLocation();
   const current = pageNavigation.find(
     (item) => item.href === location.pathname
@@ -18,9 +21,10 @@ const TopBar = () => {
           <img src="/logovincent.svg" width={25} />
         </li>
         <li>
-          <a>
-            <span className="">{title}</span>
-          </a>
+            <span className="">{t(title)}</span>
+        </li>
+          <li>
+            {/* <Cog6ToothIcon onClick={} width={25} className="hover:animate-spin"/> */}
         </li>
       </ul>
     </nav>

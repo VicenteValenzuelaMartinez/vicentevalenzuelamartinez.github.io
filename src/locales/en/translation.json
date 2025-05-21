@@ -1,0 +1,13 @@
+{
+    "Home":
+    {
+        "Headline": "Welcome to my page!",
+        "Subtitle": "Full-stack developer & bad artist at your service"
+    },
+    "Sidebar":{
+        "Home":"Home",
+        "About": "About Me",
+        "Contact": "Contact",
+        "Webcomics": "Webcomics"
+    }
+}

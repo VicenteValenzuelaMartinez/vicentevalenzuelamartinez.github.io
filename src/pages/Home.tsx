@@ -1,8 +1,11 @@
 function Home() {
   return (
     <>
-      <div>Hello</div>
-      <div>This is app</div>
+    <div>
+        <span></span>
+    </div>
+      <div></div>
+      <div></div>
     </>
   );
 }

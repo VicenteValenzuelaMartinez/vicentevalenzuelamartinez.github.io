@@ -7,20 +7,32 @@ import {
 } from "@heroicons/react/24/solid";
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export const pageNavigation = [
-  { name: "Home", href: "/", current: false, icon: HomeIcon },
+  { name: "Sidebar.Home", href: "/", current: false, icon: HomeIcon },
   {
-    name: "Sobre Mi",
+    name: "Sidebar.About",
     href: "/about",
     current: false,
     icon: InformationCircleIcon,
   },
-  { name: "Contacto", href: "/contact", current: false, icon: AtSymbolIcon },
-  { name: "Webcomics", href: "/webcomic", current: false, icon: BookOpenIcon },
+  {
+    name: "Sidebar.Contact",
+    href: "/contact",
+    current: false,
+    icon: AtSymbolIcon,
+  },
+  {
+    name: "Sidebar.Webcomics",
+    href: "/webcomic",
+    current: false,
+    icon: BookOpenIcon,
+  },
 ];
 
 const SidebarMenu = () => {
+  const { t } = useTranslation();
   const location = useLocation();
   const [isHovered, setIsHovered] = useState(false);
   return (
@@ -40,12 +52,12 @@ const SidebarMenu = () => {
               key={item.name}
               to={item.href}
               className={classNames(
-                "flex items-center gap-3 px-3 py-4 hover:bg-sky-700 whitespace-nowrap",
-                isActive && "bg-zinc-900 hover:bg-zinc-900"
+                "flex items-center gap-3 px-3 py-4 whitespace-nowrap",
+                isActive ? "bg-cyan-700" : "hover:bg-sky-700"
               )}
             >
               <Icon className="pl-2 w-8 h-8 flex-shrink-0" />
-              {isHovered && <span>{item.name}</span>}
+              {isHovered && <span>{t(item.name)}</span>}
             </Link>
           );
         })}

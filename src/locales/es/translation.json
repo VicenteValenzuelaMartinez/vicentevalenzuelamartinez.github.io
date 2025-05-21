@@ -1,0 +1,13 @@
+{
+    "Home":
+    {
+        "Headline": "¡Bienvenido a mi página!",
+        "Subtitle": "Desarrollador full-stack & mal dibujante a su servicio"
+    },
+    "Sidebar":{
+        "Home":"Página Principal",
+        "About": "Sobre Mi",
+        "Contact": "Contacto",
+        "Webcomics": "Webcomics"
+    }
+}
