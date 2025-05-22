@@ -1,13 +1,57 @@
 {
-    "Home":
-    {
-        "Headline": "Welcome to my page!",
-        "Subtitle": "Full-stack developer & bad artist at your service"
+  "Home": {
+    "Headline": "Welcome to my page!",
+    "Subtitle": "Full-stack developer & bad artist at your service"
+  },
+  "Sidebar": {
+    "Home": "Home",
+    "About": "About Me",
+    "Contact": "Contact",
+    "Webcomics": "Webcomics"
+  },
+  "About": {
+    "Title": "Hi, I'm Vicente",
+    "Subtitle": "Majored in Systems Enginerring",
+    "P1": "I'm mainly interested in full-stack web development, though I feel more comfortable doing backend work.",
+    "P2": "These are the technologies I currently handle:",
+    "Tecnologies": {
+      "1": "Typescript",
+      "2": "React",
+      "3": "Golang",
+      "4": "Azure (Cloud & DevOps)",
+      "5": "Python",
+      "6": "Microsoft 365 & Windows Server",
+      "7": "Linux (Ubuntu, CentOS & Kali)",
+      "8": "SQL Server, MySQL, OracleDB & AWS DynamoDB",
+      "9": "Springboot",
+      "10": "Java Hibernate"
     },
-    "Sidebar":{
-        "Home":"Home",
-        "About": "About Me",
-        "Contact": "Contact",
-        "Webcomics": "Webcomics"
-    }
+    "P3": "I'm also proficient at the english language (C1 according to TOEFL).",
+    "Hobby": "As a hobby, I enjoy drawing, playing videogames and playing tabletop games, mainly D&D and Pathfinder 2e.",
+    "WorkedOn": "I've had the pleasure of working alongside:",
+    "Companies": {
+      "1": {
+        "name": "Hermes Corp",
+        "logo": "https://media.licdn.com/dms/image/v2/D560BAQFIj2G1Tf5JfA/company-logo_200_200/company-logo_200_200/0/1682449392726/hermes_corp_logo?e=2147483647&v=beta&t=vLjvbXEVEiH1BNI_EiiNZIX86gJabnZajtpmFoSje_0",
+        "website": "https://www.hermescorp.io/"
+      },
+      "2": {
+        "name": "QMC",
+        "logo": "https://qmcmex.com/public/imgs/logos/QMCB.png",
+        "website": "https://qmcmex.com/home"
+      },
+      "3": {
+        "name": "INEGI",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/8/89/INEGI.png",
+        "website": "https://www.inegi.org.mx/"
+      },
+      "4": {
+        "name": "Dala.Care",
+        "logo": "https://media.licdn.com/dms/image/v2/D4D0BAQHOie_gKdplig/company-logo_200_200/company-logo_200_200/0/1709812848550/dala_care_logo?e=2147483647&v=beta&t=oUELnJsLOQXQofohmyGNjFYNf6Ia8GulTYBF6VxfgpI",
+        "website": "https://dala.care/"
+      }
+    },
+    "HopeTo": "I hope I get to work with you :)",
+    "ContactMe": "Contact me ->"
+  }
 }
