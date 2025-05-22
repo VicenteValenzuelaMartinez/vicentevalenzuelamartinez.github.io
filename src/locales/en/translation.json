@@ -53,5 +53,12 @@
     },
     "HopeTo": "I hope I get to work with you :)",
     "ContactMe": "Contact me ->"
+  },
+  "Contact": {
+    "Title": "Contact Info",
+    "Email": "Email Address",
+    "EmailAddress": "valenzuelamartinezvicente@gmail.com",
+    "SocialMedia": "Social Media"
+
   }
 }

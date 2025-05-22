@@ -53,5 +53,11 @@
     },
     "HopeTo":"Espero poder trabjar contigo :)",
     "ContactMe": "Contáctame ->"
+  },
+  "Contact":{
+    "Title": "Información de Contacto",
+    "Email": "Dirección de correo electronico",
+    "EmailAddress": "valenzuelamartinezvicente@gmail.com",
+    "SocialMedia": "Redes sociales"
   }
 }
