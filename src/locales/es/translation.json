@@ -2,12 +2,63 @@
   "Home": {
     "Headline": "¡Bienvenido!",
     "Subtitle": "Desarrollador full-stack a su servicio",
+    "Subtitle2": "También dibujo cosas",
     "Intro": "Soy un recién graduado de Ingeniería en Sistemas",
     "Intro2": "He trabajado en multiples proyectos como desarrollador full-stack y busco poder trabajar en más.",
     "Intro3": "Esta es mi página personal para exponer algunos de trabajos y para subir algunos proyectos personales.",
     "Intro4": "Si deseas trabajar conmigo, ",
     "Intro5": "De cualquier modo, disfruta de la página :D.",
-    "ProjectsIntro": "Estos son algunos de los proyectos en los que he trabajado"
+    "ProjectsIntro": "Estos son algunos de los proyectos en los que he trabajado",
+    "TecUsed": "Made with",
+    "Projects": {
+      "QMCVDA": {
+        "Title": "Sistema QMC VDA",
+        "About": "Sistema para ayudar a reclutadores y personal administrativo a gestionar clientes actuales y futuros que desean suscribirse a uno o más de los diversos cursos y certificaciones de la empresa. Colaboré principalmente en la recuperación de datos de clientes y la creación de páginas para facilitar las revisiones técnicas de cada cliente y determinar si cumplía con los requisitos de cada curso..",
+        "Technologies used": {
+          "1": "ExpressJS",
+          "2": "Javascript",
+          "3": "MySQL",
+          "4": "Handlebars",
+          "5": "Trello"
+        }
+      },
+      "DALACARE": {
+        "Title": "Vista de Verificación Electrónica",
+        "About": "Implementación de función para verificación electrónica en plataformas móviles y de escritorio. Esta función permitía principalmente ingresar y visualizar las firmas electrónicas proporcionadas por los cuidadores y los beneficiarios. Se incluyó una página de configuración que permitía al cliente incluir el módulo en sus oficinas.",
+        "Technologies used": {
+          "1": "React",
+          "2": "Typescript",
+          "3": "GoLang",
+          "4": "Vercel",
+          "5": "DynamoDB",
+          "6": "Linear"
+        }
+      },
+      "FACERECOGNITION": {
+        "Title": "Aplicación de Verificación Facial",
+        "About": "Desarrollo de una aplicación de reconocimiento facial que determinaba si una persona estaba registrada en el inquilino actual y denegaba el acceso a quienes no lo estaban. Permitía a las personas registrarse en la organización y enviar su foto de perfil para ser reconocidas. La aplicación se complementó con el uso de inteligencia artificial y servicios de reconocimiento facial de Azure.",
+        "Technologies used": {
+          "1": "React Native",
+          "2": "Expo Go",
+          "3": "Azure",
+          "4": "Azure DevOps",
+          "5": "Sql",
+          "6": "Raspberry"
+        }
+      },
+      "TASKMANAGER": {
+        "Title": "Task Managing App",
+        "About": "Desarrollo de una aplicación para asignar tareas a diferentes personas dentro de una organización. Incluyó validación mediante tokens JWT y cifrado de datos de usuario en la base de datos.",
+        "Technologies used": {
+          "1": "Java",
+          "2": "Springboot",
+          "3": "Gradle",
+          "4": "React",
+          "5": "Javascript",
+          "6": "MySQL"
+        }
+      }
+    }
   },
   "Sidebar": {
     "Home": "Página Principal",
@@ -57,10 +108,10 @@
         "website": "https://dala.care/"
       }
     },
-    "HopeTo":"Espero poder trabjar contigo :)",
+    "HopeTo": "Espero poder trabjar contigo :)",
     "ContactMe": "Contáctame ->"
   },
-  "Contact":{
+  "Contact": {
     "Title": "Información de Contacto",
     "Email": "Dirección de correo electronico",
     "EmailAddress": "valenzuelamartinezvicente@gmail.com",

@@ -1,0 +1,99 @@
+{
+  "Technologies": {
+    "ExpressJS": {
+      "name": "ExpressJS",
+      "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfUFX5WGYnZFheEs319wdl07R6_rXtMdtHzfZ1AQfV0uUwYPN1EgkzKi231Oh9X3Q0OpvZ3nebFVyti2vkHmgN9fvx6BMW88VHMco_0w",
+      "website": "https://expressjs.com/"
+    },
+    "Javascript": {
+      "name": "Javascript",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png",
+      "website": "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+    },
+    "MySQL": {
+      "name": "MySQL",
+      "logo": "https://1000marcas.net/wp-content/uploads/2020/12/MySQL-Logo-2002.png",
+      "website": "https://www.mysql.com/"
+    },
+    "Handlebars": {
+      "name": "Handlebars",
+      "logo": "https://i0.wp.com/blog.fossasia.org/wp-content/uploads/2017/07/handlebars-js.png?fit=500%2C500&ssl=1",
+      "website": "https://handlebarsjs.com/"
+    },
+    "Trello": {
+      "name": "Trello",
+      "logo": "https://avatars.slack-edge.com/2021-07-19/2282472048054_9a51d280179d828b3ad7_512.png",
+      "website": "https://trello.com/en"
+    },
+    "React": {
+      "name": "React",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/React.svg/1200px-React.svg.png",
+      "website": "https://react.dev/"
+    },
+    "Typescript": {
+      "name": "Typescript",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/1200px-Typescript_logo_2020.svg.png",
+      "website": "https://www.typescriptlang.org/"
+    },
+    "Golang": {
+      "name": "Golang",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Go_Logo_Blue.svg/1200px-Go_Logo_Blue.svg.png",
+      "website": "https://go.dev/"
+    },
+    "Vercel": {
+      "name": "Vercel",
+      "logo": "https://pipedream.com/s.v0/app_XaLh2x/logo/orig",
+      "website": "https://vercel.com"
+    },
+    "DynamoDB": {
+      "name": "AWS DynamoDB",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/f/fd/DynamoDB.png",
+      "website": "https://aws.amazon.com/es/dynamodb/"
+    },
+    "Linear": {
+      "name": "Linear",
+      "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxh-ehr-zuOE7bQqm2Whuom2ZZtAa-yhFzhg&s",
+      "website": "https://linear.app/"
+    },
+    "React Native": {
+      "name": "React Native",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/640px-React-icon.svg.png",
+      "website": "https://reactnative.dev/"
+    },
+    "Expo Go": {
+      "name": "Expo Go",
+      "logo": "https://cdn.worldvectorlogo.com/logos/expo-go-app.svg",
+      "website": "https://expo.dev/go"
+    },
+    "Azure": {
+      "name": "Azure",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Microsoft_Azure.svg/1200px-Microsoft_Azure.svg.png",
+      "website": "https://azure.microsoft.com/en-us/"
+    },
+    "Azure DevOps": {
+      "name": "Azure DevOps",
+      "logo": "https://setdevelopers.com/wp-content/uploads/2024/07/Azure-DevOps-1.png",
+      "website": "https://azure.microsoft.com/en-us/products/devops"
+    },
+    "Raspberry Pi": {
+      "name": "Raspberry Pi",
+      "logo": "https://brandlogos.net/wp-content/uploads/2020/09/raspberry-pi-logo.png",
+      "website": "https://www.raspberrypi.com/"
+    },
+    "Java": {
+      "name": "Java",
+      "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/3/30/Java_programming_language_logo.svg/800px-Java_programming_language_logo.svg.png",
+      "website": "https://www.java.com/en/"
+    },
+    "Springboot": {
+      "name": "Springboot",
+      "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8i4zPog-0j0JR_yZglxPhTPZXxN2iMTQ3Dw&s",
+      "website": "https://spring.io/projects/spring-boot"
+    },
+    "Gradle": {
+      "name": "Gradle",
+      "logo": "https://avatars.githubusercontent.com/u/124156?s=200&v=4",
+      "website": "https://gradle.org/"
+    }
+  }
+}

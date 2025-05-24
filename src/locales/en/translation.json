@@ -2,6 +2,7 @@
   "Home": {
     "Headline": "Welcome!",
     "Subtitle": "Full-stack developer at your service",
+    "Subtitle2": "I also draw stuff",
     "Intro": "I'm a recent graduate from Computer Engineering",
     "Intro2": "I've worked on multiple projects as a full-stack developer and I'm looking forward to work on more.",
     "Intro3": "This is my personal webpage to keep track of my work and also submit some personal projects here.",
@@ -35,14 +36,14 @@
       },
       "FACERECOGNITION": {
         "Title": "Face Recognition App",
-        "About": "Developed a face recognition application that determined wheter a person was registered or not on the current tenant and denied access for people that weren't registered. Included the capability for people to register themselves to the organization & submit their own profile picture in order to be recognized. Application was aided with the use of Azure AI & face recognition services.",
+        "About": "Developed a face recognition application that determined wheter a person was registered or not on the current tenant and denied access for people that weren't registered. Included the capability for people to register themselves to the organization & submit their own profile picture in order to be recognized. Application was aided with the use of AI & face recognition services from Azure.",
         "Technologies used": {
           "1": "React Native",
           "2": "Expo Go",
           "3": "Azure",
           "4": "Azure DevOps",
-          "5": "Sql",
-          "6": "Raspberry"
+          "5": "MySQL",
+          "6": "Raspberry Pi"
         }
       },
       "TASKMANAGER": {
@@ -56,13 +57,6 @@
           "5": "Javascript",
           "6": "MySQL"
         }
-      }
-    },
-    "Technologies": {
-      "ExpressJS": {
-        "name": "ExpressJS",
-        "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfUFX5WGYnZFheEs319wdl07R6_rXtMdtHzfZ1AQfV0uUwYPN1EgkzKi231Oh9X3Q0OpvZ3nebFVyti2vkHmgN9fvx6BMW88VHMco_0w",
-        "website": "https://expressjs.com/"
       }
     }
   },
