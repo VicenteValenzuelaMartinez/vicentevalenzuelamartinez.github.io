@@ -23,12 +23,12 @@ export const pageNavigation = [
     current: false,
     icon: AtSymbolIcon,
   },
-  {
-    name: "Sidebar.Webcomics",
-    href: "/webcomic",
-    current: false,
-    icon: BookOpenIcon,
-  },
+  // {
+  //   name: "Sidebar.Webcomics",
+  //   href: "/webcomic",
+  //   current: false,
+  //   icon: BookOpenIcon,
+  // },
 ];
 
 const SidebarMenu = () => {

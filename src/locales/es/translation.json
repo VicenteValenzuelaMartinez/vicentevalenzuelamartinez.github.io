@@ -1,7 +1,13 @@
 {
   "Home": {
-    "Headline": "¡Bienvenido a mi página!",
-    "Subtitle": "Desarrollador full-stack & mal dibujante a su servicio"
+    "Headline": "¡Bienvenido!",
+    "Subtitle": "Desarrollador full-stack a su servicio",
+    "Intro": "Soy un recién graduado de Ingeniería en Sistemas",
+    "Intro2": "He trabajado en multiples proyectos como desarrollador full-stack y busco poder trabajar en más.",
+    "Intro3": "Esta es mi página personal para exponer algunos de trabajos y para subir algunos proyectos personales.",
+    "Intro4": "Si deseas trabajar conmigo, ",
+    "Intro5": "De cualquier modo, disfruta de la página :D.",
+    "ProjectsIntro": "Estos son algunos de los proyectos en los que he trabajado"
   },
   "Sidebar": {
     "Home": "Página Principal",
@@ -10,7 +16,7 @@
     "Webcomics": "Webcomics"
   },
   "About": {
-    "Title": "Hola, soy Vicente",
+    "Title": "Hola, soy Vicente Valenzuela",
     "Subtitle": "Titulado en Ingeniería en Sistemas",
     "P1": "Me interesa el desarrollo full stack de sitios web, estoy más enfocado el desarrollo backend.",
     "P2": "Actualmente manejo las siguientes tecnologías:",
