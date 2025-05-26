@@ -48,11 +48,11 @@ const ProjectCard = ({ projectKey }: ProjectCardProps) => {
   }, [imagePaths.length]);
 
   return (
-    <div className="flex flex-col gap-4 p-4 bg-zinc-700 rounded-xl shadow">
-      <div className="flex flex-col lg:flex-row gap-4">
+    <div className="flex flex-col gap-4 md:p-4 p-1 bg-zinc-700 rounded-xl shadow">
+      <div className="flex flex-col lg:flex-row md:gap-4 gap-1">
         <div className="flex-1 p-5 bg-zinc-900 rounded-xl">
           <h3 className="text-2xl font-bold">{project.Title}</h3>
-          <p className="text-xl mt-2 text-gray-100 text-justify">{project.About}</p>
+          <p className="text-xl mt-2 text-gray-100 md:text-justify">{project.About}</p>
         </div>
             {imagePaths.length>0?
         <div className="flex-1 relative overflow-hidden rounded-lg bg-zinc-900 p-5 h-100">
@@ -70,7 +70,7 @@ const ProjectCard = ({ projectKey }: ProjectCardProps) => {
             <div className="text-2xl flex flex-wrap justify-start">
         {t("Home.TecUsed")}
       </div>
-      <div className="flex flex-wrap justify-start gap-10 p-7 bg-zinc-900">
+      <div className="flex flex-wrap justify-start gap-10 md:p-7 p-5 bg-zinc-900">
         {techList.map((techKey) => {
           const tech = techInfo.Technologies[techKey];
           if (!tech) return null;
