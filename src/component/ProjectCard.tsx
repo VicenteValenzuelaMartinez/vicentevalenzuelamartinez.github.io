@@ -55,7 +55,7 @@ const ProjectCard = ({ projectKey }: ProjectCardProps) => {
           <p className="text-xl mt-2 text-gray-100 md:text-justify">{project.About}</p>
         </div>
             {imagePaths.length>0?
-        <div className="flex-1 relative overflow-hidden rounded-lg bg-zinc-900 p-5 h-100">
+        <div className="flex-1 relative overflow-hidden rounded-lg bg-zinc-900 md:p-5 p-0 h-100">
           <img
             key={currentImage}
             src={imagePaths[currentImage]}
