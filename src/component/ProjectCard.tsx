@@ -1,8 +1,8 @@
 import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
 import ImageCard from "./ImageCard";
-import images from "../json/component/projectImages.json" with { type: "json" };
-import techData from "../json/component/technologies.json" with { type: "json" };
+import images from "../json/component/projectImages.json";
+import techData from "../json/component/technologies.json";
 interface ProjectCardProps {
   projectKey: string;
 }
@@ -30,44 +30,58 @@ const ProjectCard = ({ projectKey }: ProjectCardProps) => {
   const techList = Object.values(project["Technologies used"]);
 
   const [currentImage, setCurrentImage] = useState(0);
-  const [fade, setFade] = useState(true);
+  const [fade, setFade] = useState(false);
+  const [nextImage, setNextImage] = useState(1);
 
   const imagePaths = (typedImages[projectKey] || []).map(
     (filename: string) => `/projects/${projectKey}/${filename}`
   );
 
   useEffect(() => {
+    if (imagePaths.length <= 1) return;
     const interval = setInterval(() => {
-      setFade(false);
+      const newNextImage = (currentImage + 1) % imagePaths.length;
+      setNextImage(newNextImage);
+      setFade(true);
       setTimeout(() => {
-        setCurrentImage((prev) => (prev + 1) % imagePaths.length);
-        setFade(true);
-      }, 500);
-    }, 10000);
+        setCurrentImage(newNextImage);
+        setFade(false);
+      }, 1000);
+    }, 5000);
     return () => clearInterval(interval);
-  }, [imagePaths.length]);
+  }, [currentImage, imagePaths.length]);
 
   return (
     <div className="flex flex-col gap-4 md:p-4 p-1 bg-zinc-700 rounded-xl shadow">
       <div className="flex flex-col lg:flex-row md:gap-4 gap-1">
         <div className="flex-1 p-5 bg-zinc-900 rounded-xl">
           <h3 className="text-2xl font-bold">{project.Title}</h3>
-          <p className="text-xl mt-2 text-gray-100 md:text-justify">{project.About}</p>
+          <p className="text-xl mt-2 text-gray-100 md:text-justify">
+            {project.About}
+          </p>
         </div>
-            {imagePaths.length>0?
-        <div className="flex-1 relative overflow-hidden rounded-lg bg-zinc-900 md:p-5 p-0 h-100">
-          <img
-            key={currentImage}
-            src={imagePaths[currentImage]}
-            alt=""
-            className={`w-full h-full object-cover transition-opacity duration-2000 ${
-              fade ? "opacity-100" : "opacity-0"
-            }`}
-          />
-        </div>
-            :""}
+        {imagePaths.length > 0 && (
+          <div className="flex-1 relative overflow-hidden rounded-lg bg-zinc-900 md:p-5 p-0 h-100">
+            <img
+              src={imagePaths[currentImage]}
+              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-10000 ${
+                fade ? "opacity-0 z-0" : "opacity-100 z-10"
+              }`}
+              alt=""
+            />
+            {imagePaths.length > 1 && (
+              <img
+                src={imagePaths[nextImage]}
+                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+                  fade ? "opacity-100 z-10" : "opacity-0 z-0"
+                }`}
+                alt=""
+              />
+            )}
+          </div>
+        )}
       </div>
-            <div className="text-2xl flex flex-wrap justify-start">
+      <div className="text-2xl flex flex-wrap justify-start">
         {t("Home.TecUsed")}
       </div>
       <div className="flex flex-wrap justify-start gap-10 md:p-7 p-5 bg-zinc-900">
