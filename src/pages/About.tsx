@@ -47,7 +47,7 @@ function About() {
         </div>
       </div>
 
-      <div className="pt-10 text-3xl font-serif">
+      <div className="py-10 text-3xl font-serif">
         {t("About.HopeTo")}
         <div>
           <Link
