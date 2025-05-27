@@ -32,11 +32,18 @@ function Home() {
       <div className="md:pl-16 px-10">
         <div className="flex flex-wrap">
           <div className="flex flex-col md:text-justify text-center md:p-10 pl-10 py-10 font-serif">
-            <div className="md:text-4xl text-3xl md:text-left pb-5">{t("Home.Intro")}</div>
+            <div className="md:text-4xl text-3xl md:text-left pb-5">
+              {t("Home.Intro")}
+            </div>
             <span className="md:text-2xl text-xl">{t("Home.Intro2")}</span>
-            <span className="md:text-2xl text-xl pb-10">{t("Home.Intro3")}</span>
+            <span className="md:text-2xl text-xl pb-10">
+              {t("Home.Intro3")}
+            </span>
             <span className="md:text-2xl text-xl pb-3">{t("Home.Intro4")}</span>
-            <Link to="/contact" className="text-blue-400 md:text-2xl pb-10 text-xl">
+            <Link
+              to="/contact"
+              className="text-blue-400 md:text-2xl pb-10 text-xl"
+            >
               {t("About.ContactMe")}
             </Link>
             <div className="md:text-2xl text-xl">{t("Home.Intro5")}</div>
@@ -46,7 +53,9 @@ function Home() {
       <div className="h-10">
         <div className="md:px-25 pl-16 py-10 flex flex-wrap border border-neutral-900 bg-gradient-to-l from-purple-950 to-zinc-950">
           <div className="flex flex-col flex-1 gap-10  font-serif ">
-            <span className="md:text-3xl text-2xl">{t("Home.ProjectsIntro")}: </span>
+            <span className="md:text-3xl text-2xl">
+              {t("Home.ProjectsIntro")}:{" "}
+            </span>
             {projectKeys.map((key) => (
               <ProjectCard key={key} projectKey={key} />
             ))}{" "}
