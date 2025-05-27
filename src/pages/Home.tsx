@@ -31,7 +31,7 @@ function Home() {
       </div>
       <div className="md:pl-16 px-10">
         <div className="flex flex-wrap">
-          <div className="flex flex-col md:text-justify text-center md:p-10 pl-10 py-10 font-serif">
+          <div className="flex flex-col md:w-1/2 md:text-justify text-center md:p-10 pl-10 py-10 font-serif">
             <div className="md:text-4xl text-3xl md:text-left pb-5">
               {t("Home.Intro")}
             </div>
@@ -47,6 +47,9 @@ function Home() {
               {t("About.ContactMe")}
             </Link>
             <div className="md:text-2xl text-xl">{t("Home.Intro5")}</div>
+          </div>
+          <div className="md:w-1/2 p-4 pl-[64px] md:pl-2">
+            <img src="/homepage.webp" className="md:p-16" />
           </div>
         </div>
       </div>
