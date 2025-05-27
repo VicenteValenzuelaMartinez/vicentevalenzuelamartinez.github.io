@@ -16,7 +16,7 @@ function Home() {
     <>
       <div className="flex justify-center items-center md:h-2/3 h-1/3 pt-10 border border-neutral-900 bg-gradient-to-r from-sky-900 to-zinc-950">
         <div className="flex flex-wrap">
-          <div className="flex flex-col items-center pl-16">
+          <div className="flex flex-col text-center items-center pl-16">
             <div className="md:text-7xl text-4xl font-serif md:pb-5 p-2">
               {t("Home.Headline")}
             </div>

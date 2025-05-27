@@ -67,7 +67,7 @@ const ProjectCard = ({ projectKey }: ProjectCardProps) => {
               className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-500 ${
                 fade ? "opacity-0 z-0" : "opacity-100 z-10"
               }`}
-              alt=""
+              alt="projectImage"
             />
             {imagePaths.length > 1 && (
               <img
@@ -75,7 +75,7 @@ const ProjectCard = ({ projectKey }: ProjectCardProps) => {
                 className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-1000 ${
                   fade ? "opacity-100 z-10" : "opacity-0 z-0"
                 }`}
-                alt=""
+                alt="projectImage2"
               />
             )}
           </div>
@@ -84,7 +84,7 @@ const ProjectCard = ({ projectKey }: ProjectCardProps) => {
       <div className="text-2xl flex flex-wrap justify-start">
         {t("Home.TecUsed")}
       </div>
-      <div className="flex flex-wrap justify-start gap-10 md:p-7 p-5 bg-zinc-900">
+      <div className="flex flex-wrap justify-center md:justify-start md:p-7 gap-10 md:gap-20 p-5 bg-zinc-900">
         {techList.map((techKey) => {
           const tech = techInfo.Technologies[techKey];
           if (!tech) return null;
