@@ -64,7 +64,7 @@ const ProjectCard = ({ projectKey }: ProjectCardProps) => {
           <div className="flex-1 relative overflow-hidden rounded-lg bg-zinc-900 md:p-5 p-0 h-100">
             <img
               src={imagePaths[currentImage]}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-10000 ${
+              className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-500 ${
                 fade ? "opacity-0 z-0" : "opacity-100 z-10"
               }`}
               alt=""
@@ -72,7 +72,7 @@ const ProjectCard = ({ projectKey }: ProjectCardProps) => {
             {imagePaths.length > 1 && (
               <img
                 src={imagePaths[nextImage]}
-                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+                className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-1000 ${
                   fade ? "opacity-100 z-10" : "opacity-0 z-0"
                 }`}
                 alt=""
