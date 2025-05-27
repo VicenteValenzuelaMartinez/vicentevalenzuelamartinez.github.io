@@ -94,6 +94,16 @@
       "name": "Gradle",
       "logo": "https://avatars.githubusercontent.com/u/124156?s=200&v=4",
       "website": "https://gradle.org/"
+    },
+    "Kanban": {
+      "name": "Kanban",
+      "logo": "https://static.vecteezy.com/system/resources/previews/002/837/593/non_2x/kanban-lean-method-line-icon-vector.jpg",
+      "website": "https://asana.com/resources/what-is-kanban"
+    },
+    "Scrum": {
+      "name": "Scrum",
+      "logo": "https://thumbs.dreamstime.com/b/agile-icon-methodology-vector-development-scrum-flexible-software-logo-concept-206202942.jpg",
+      "website": "https://www.scrum.org/resources/what-scrum-module"
     }
   }
 }

@@ -13,7 +13,7 @@
     "Intro4": "Si deseas trabajar conmigo, ",
     "Intro5": "De cualquier modo, disfruta de la página :D.",
     "ProjectsIntro": "Estos son algunos de los proyectos en los que he trabajado",
-    "TecUsed": "Creado con",
+    "TecUsed": "Creado utilizando",
     "Projects": {
       "QMCVDA": {
         "Title": "Sistema QMC VDA",
@@ -23,7 +23,9 @@
           "2": "Javascript",
           "3": "MySQL",
           "4": "Handlebars",
-          "5": "Trello"
+          "5": "Trello",
+          "6": "Scrum",
+          "7": "Kanban"
         }
       },
       "DALACARE": {
@@ -35,7 +37,8 @@
           "3": "GoLang",
           "4": "Vercel",
           "5": "DynamoDB",
-          "6": "Linear"
+          "6": "Linear",
+          "7": "Kanban"
         }
       },
       "FACERECOGNITION": {
@@ -47,7 +50,8 @@
           "3": "Azure",
           "4": "Azure DevOps",
           "5": "Sql",
-          "6": "Raspberry"
+          "6": "Raspberry",
+          "7": "Scrum"
         }
       },
       "TASKMANAGER": {
@@ -59,7 +63,8 @@
           "3": "Gradle",
           "4": "React",
           "5": "Javascript",
-          "6": "MySQL"
+          "6": "MySQL",
+          "7": "Kanban"
         }
       }
     }
