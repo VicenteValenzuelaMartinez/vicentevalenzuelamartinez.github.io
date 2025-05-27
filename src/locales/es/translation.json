@@ -1,4 +1,8 @@
 {
+  "Error": {
+    "Message": "Uh oh, la página que buscas no existe",
+    "Goback": "Vuelve a la página principal"
+  },
   "Home": {
     "Headline": "¡Bienvenido!",
     "Subtitle": "Desarrollador full-stack a su servicio",

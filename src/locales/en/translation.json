@@ -1,4 +1,8 @@
 {
+  "Error": {
+    "Message": "Uh oh, seems like the page you're looking for doesn't exist",
+    "Goback": "Go back to the main page"
+  },
   "Home": {
     "Headline": "Welcome!",
     "Subtitle": "Full-stack developer at your service",
