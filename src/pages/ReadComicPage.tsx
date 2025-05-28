@@ -65,10 +65,10 @@ function ReadComicPage() {
     setIsDragging(false);
     const delta = dragX;
 
-    if (delta < -70 && nextExists) {
+    if (delta < -50 && nextExists) {
       goToPage(page + 1);
       setDragX(0);
-    } else if (delta > 70 && page > 0) {
+    } else if (delta > 50 && page > 0) {
       goToPage(page - 1);
       setDragX(0);
     } else {
@@ -116,21 +116,25 @@ function ReadComicPage() {
               transform: `translateX(calc(-100% + ${dragX}px))`,
             }}
           >
+            {page > -1 && (
             <img
               src={prevUrl || ""}
               alt={`Previous page`}
               className="h-full w-full object-contain flex-shrink-0"
             />
+            )}
             <img
               src={imageUrl || ""}
               alt={`Current page`}
               className="h-full w-full object-contain flex-shrink-0"
             />
-            <img
-              src={nextUrl || ""}
-              alt={`Next page`}
-              className="h-full w-full object-contain flex-shrink-0"
-            />
+            {nextExists &&(
+              <img
+                src={nextUrl}
+                alt={`Next page`}
+                className="h-full w-full object-contain flex-shrink-0"
+              />
+            )}
           </div>
         </div>
       </div>
