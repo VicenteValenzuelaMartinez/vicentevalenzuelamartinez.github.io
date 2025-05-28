@@ -16,22 +16,27 @@ function ReadComicPage() {
   const shortCode = comic ? comicCodeMap[comic] || comic : "";
   const publicId = `${lang}_${shortCode}${chapter}p${page}`;
   const imageUrl = `${cloudBaseUrl}/${publicId}.png`;
+  const nextUrl = `${cloudBaseUrl}/${lang}_${shortCode}${chapter}p${
+    page + 1
+  }.png`;
+  const prevUrl = `${cloudBaseUrl}/${lang}_${shortCode}${chapter}p${
+    page - 1
+  }.png`;
 
   const [imageExists, setImageExists] = useState(true);
   const [nextExists, setNextExists] = useState(false);
 
+  const [dragX, setDragX] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+
   const touchStartX = useRef<number | null>(null);
-  const touchEndX = useRef<number | null>(null);
 
   useEffect(() => {
     const testImage = new Image();
-    const nextUrl = `${cloudBaseUrl}/${lang}_${shortCode}${chapter}p${
-      page + 1
-    }.png`;
     testImage.src = nextUrl;
     testImage.onload = () => setNextExists(true);
     testImage.onerror = () => setNextExists(false);
-  }, [lang, shortCode, page, chapter]);
+  }, [nextUrl]);
 
   useEffect(() => {
     const testImage = new Image();
@@ -45,18 +50,32 @@ function ReadComicPage() {
   };
 
   const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.changedTouches[0].clientX;
+    touchStartX.current = e.touches[0].clientX;
+    setIsDragging(true);
   };
 
-  const handleTouchEnd = (e: React.TouchEvent) => {
-    touchEndX.current = e.changedTouches[0].clientX;
-    const delta = (touchStartX.current ?? 0) - (touchEndX.current ?? 0);
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!isDragging || touchStartX.current === null) return;
+    const currentX = e.touches[0].clientX;
+    const deltaX = currentX - touchStartX.current;
+    setDragX(deltaX);
+  };
 
-    if (delta > 50 && nextExists) {
+  const handleTouchEnd = () => {
+    setIsDragging(false);
+    const delta = dragX;
+
+    if (delta < -70 && nextExists) {
       goToPage(page + 1);
-    } else if (delta < -50 && page > 0) {
+      setDragX(0);
+    } else if (delta > 70 && page > 0) {
       goToPage(page - 1);
+      setDragX(0);
+    } else {
+      setDragX(0);
     }
+
+    touchStartX.current = null;
   };
 
   if (!imageExists) {
@@ -68,6 +87,7 @@ function ReadComicPage() {
       <div
         className="relative w-full max-w-3xl h-full"
         onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
         <div className="hidden md:block">
@@ -89,11 +109,30 @@ function ReadComicPage() {
           )}
         </div>
 
-        <img
-          src={imageUrl}
-          alt={`Page ${page}`}
-          className="h-full w-full object-contain"
-        />
+        <div className="relative w-full h-full overflow-hidden">
+          <div
+            className="flex"
+            style={{
+              transform: `translateX(calc(-100% + ${dragX}px))`,
+            }}
+          >
+            <img
+              src={prevUrl || ""}
+              alt={`Previous page`}
+              className="h-full w-full object-contain flex-shrink-0"
+            />
+            <img
+              src={imageUrl || ""}
+              alt={`Current page`}
+              className="h-full w-full object-contain flex-shrink-0"
+            />
+            <img
+              src={nextUrl || ""}
+              alt={`Next page`}
+              className="h-full w-full object-contain flex-shrink-0"
+            />
+          </div>
+        </div>
       </div>
     </div>
   );
