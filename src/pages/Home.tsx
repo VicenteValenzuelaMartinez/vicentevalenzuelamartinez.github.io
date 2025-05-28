@@ -16,7 +16,7 @@ function Home() {
     <>
       <div className="flex justify-center items-center md:h-2/3 h-1/3 pt-10 border border-neutral-900 bg-gradient-to-r from-sky-900 to-zinc-950">
         <div className="flex flex-wrap">
-          <div className="flex flex-col text-center items-center pl-16">
+          <div className="flex flex-col text-center items-center">
             <div className="md:text-7xl text-4xl font-serif md:pb-5 p-2">
               {t("Home.Headline")}
             </div>
@@ -31,7 +31,7 @@ function Home() {
       </div>
       <div className="md:pl-16 px-10">
         <div className="flex flex-wrap">
-          <div className="flex flex-col md:w-1/2 md:text-justify text-center md:p-10 pl-10 py-10 font-serif">
+          <div className="flex flex-col md:w-1/2 md:text-justify text-center md:p-10 py-10 font-serif">
             <div className="md:text-4xl text-3xl md:text-left pb-5">
               {t("Home.Intro")}
             </div>
@@ -54,7 +54,7 @@ function Home() {
         </div>
       </div>
       <div className="h-10">
-        <div className="md:px-25 pl-16 py-10 flex flex-wrap border border-neutral-900 bg-gradient-to-l from-purple-950 to-zinc-950">
+        <div className="md:px-25 md:pl-16 p-4 pl-6 py-10 flex flex-wrap border border-neutral-900 bg-gradient-to-l from-purple-950 to-zinc-950">
           <div className="flex flex-col flex-1 gap-10  font-serif ">
             <span className="md:text-3xl text-2xl">
               {t("Home.ProjectsIntro")}:{" "}

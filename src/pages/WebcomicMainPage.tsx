@@ -1,6 +1,6 @@
 import CoverCard from "../component/CoverCard";
 
-function Webcomic() {
+function WebcomicMainPage() {
   return (
     <div className="p-16">
       <div className="flex flex-wrap justify-center gap-15">
@@ -8,11 +8,11 @@ function Webcomic() {
           image="covers/unarmedKnight.webp"
           imageOnHover="covers/unarmedKnightBlood.webp"
           title="Knight Tales"
-          href="/webcomic/knighttales/1"
+          href="/webcomic/es/knighttales/ch1/0" 
         />
       </div>
     </div>
   );
 }
 
-export default Webcomic;
+export default WebcomicMainPage;

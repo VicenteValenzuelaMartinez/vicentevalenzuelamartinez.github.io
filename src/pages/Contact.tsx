@@ -5,7 +5,7 @@ function Contact() {
   const { t } = useTranslation();
   return (
     <>
-      <div className="pt-10 px-4 sm:px-6 md:px-8 pl-20 md:pl-0">
+      <div className="pt-10 px-4 sm:px-6 md:px-8 md:pl-20 md:pl-0">
         <div className="flex flex-col items-center">
           <h1 className="text-3xl sm:text-4xl font-serif pb-8 text-center">
             {t("Contact.Title")}

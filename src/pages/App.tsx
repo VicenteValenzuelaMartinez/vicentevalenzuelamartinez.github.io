@@ -3,8 +3,9 @@ import Layout from "../component/Layout";
 import Home from "./Home";
 import About from "./About";
 import Contact from "./Contact";
-import Webcomic from "./Webcomic";
+import WebcomicMainPage from "./WebcomicMainPage";
 import ErrorPage from "./Error";
+import ReadComicPage from "./ReadComicPage";
 
 const App = () => {
   return (
@@ -13,7 +14,8 @@ const App = () => {
         <Route index element={<Home />} />
         <Route path="about" element={<About />} />
         <Route path="contact" element={<Contact />} />
-        <Route path="webcomic" element={<Webcomic />} />
+        <Route path="webcomic" element={<WebcomicMainPage />} />
+        <Route path="/webcomic/:lang/:comic/:chapter/:pageNumber" element={<ReadComicPage />} />
         <Route path="*" element={<ErrorPage />} />
       </Route>
     </Routes>

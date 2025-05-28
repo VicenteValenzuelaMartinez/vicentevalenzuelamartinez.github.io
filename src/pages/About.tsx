@@ -8,7 +8,7 @@ function About() {
   const companies = t("About.Companies", { returnObjects: true });
 
   return (
-    <div className="pl-20 pt-10 px-4 max-w-7xl mx-auto">
+    <div className="md:pl-20 pt-10 px-4 max-w-7xl mx-auto">
       <div className="text-4xl font-serif pb-10">{t("About.Title")}</div>
 
       <div className="flex flex-col md:flex-row bg-zinc-800 border border-zinc-200 dark:border-zinc-600 overflow-hidden transition-transform duration-300 transform hover:scale-105">
@@ -35,7 +35,7 @@ function About() {
 
       <div className="pt-10 text-3xl font-serif">
         {t("About.WorkedOn")}
-        <div className="flex flex-wrap gap-8 pt-5 justify-center items-center">
+        <div className="flex flex-wrap md:gap-15 gap-8 pt-5 justify-center items-center">
           {Object.values(companies).map((company, index) => (
             <ImageCard
               key={index}
