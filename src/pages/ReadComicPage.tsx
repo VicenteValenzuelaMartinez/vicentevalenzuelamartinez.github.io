@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
-import { ForwardIcon, BackwardIcon } from "@heroicons/react/16/solid";
+import { ChevronRightIcon, ChevronLeftIcon } from "@heroicons/react/16/solid";
 
 const cloudBaseUrl =
   "https://res.cloudinary.com/dh4jh6f21/image/upload/v1748391105";
@@ -74,17 +74,17 @@ function ReadComicPage() {
           {page > 0 && (
             <button
               onClick={() => goToPage(page - 1)}
-              className="text-black absolute left-0 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow hover:bg-gray-100"
+              className="absolute left-0 top-1/2 -translate-y-1/2 p-2 rounded-full shadow hover:bg-zinc-950"
             >
-              <BackwardIcon className="h-6 w-6" />
+              <ChevronLeftIcon className="h-6 w-6" />
             </button>
           )}
           {nextExists && (
             <button
               onClick={() => goToPage(page + 1)}
-              className="text-black absolute right-0 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow hover:bg-gray-100"
+              className="absolute right-0 top-1/2 -translate-y-1/2 p-2 rounded-full shadow hover:bg-zinc-950"
             >
-              <ForwardIcon className="h-6 w-6" />
+              <ChevronRightIcon className="h-6 w-6" />
             </button>
           )}
         </div>
