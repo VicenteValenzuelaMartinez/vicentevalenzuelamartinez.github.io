@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 import TopBar from "./Topbar";
 import SidebarMenu from "./SidebarMenu";
 import { Outlet } from "react-router-dom";
@@ -7,7 +7,7 @@ import ScrollToTop from "../hooks/ScrollToTop";
 const Layout = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-
+  const mainRef = useRef<HTMLElement | null>(null);
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
@@ -29,8 +29,11 @@ const Layout = () => {
           isSidebarOpen={sidebarOpen}
           setSidebarOpen={setSidebarOpen}
         />
-        <main className="flex-1 overflow-auto bg-zinc-900 text-white">
-          <ScrollToTop />
+        <main
+          ref={mainRef}
+          className="flex-1 overflow-auto bg-zinc-900 text-white"
+        >
+          <ScrollToTop scrollRef={mainRef} />
           <Outlet />
         </main>
       </div>

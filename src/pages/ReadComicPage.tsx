@@ -1,11 +1,13 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 import { ChevronRightIcon, ChevronLeftIcon } from "@heroicons/react/16/solid";
+import { userIsMobile } from "../hooks/UserIsMobile";
 
 const cloudBaseUrl =
   "https://res.cloudinary.com/dh4jh6f21/image/upload/v1748391105";
 
 function ReadComicPage() {
+  const isMobile = userIsMobile();
   const { lang, comic, chapter, pageNumber } = useParams();
   const navigate = useNavigate();
   const page = parseInt(pageNumber!, 10);
@@ -16,47 +18,135 @@ function ReadComicPage() {
   const shortCode = comic ? comicCodeMap[comic] || comic : "";
   const publicId = `${lang}_${shortCode}${chapter}p${page}`;
   const imageUrl = `${cloudBaseUrl}/${publicId}.png`;
+  const nextUrl = `${cloudBaseUrl}/${lang}_${shortCode}${chapter}p${
+    page + 1
+  }.png`;
+  const prevUrl = `${cloudBaseUrl}/${lang}_${shortCode}${chapter}p${
+    page - 1
+  }.png`;
 
   const [imageExists, setImageExists] = useState(true);
   const [nextExists, setNextExists] = useState(false);
+  const [prevExists, setPrevExists] = useState(false);
+  const [nextChapterExists, setNextChapterExists] = useState(false);
+  const [prevChapterExists, setPrevChapterExists] = useState(false);
+  const [prevChapterLastPage, setPrevChapterLastPage] = useState<number | null>(
+    null
+  );
+
+  const [dragX, setDragX] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+
+  const nextChapterUrl = `${cloudBaseUrl}/${lang}_${shortCode}${
+    parseInt(chapter!) + 1
+  }p0.png`;
+  const prevChapterUrl = `${cloudBaseUrl}/${lang}_${shortCode}${
+    parseInt(chapter!) - 1
+  }p0.png`;
 
   const touchStartX = useRef<number | null>(null);
-  const touchEndX = useRef<number | null>(null);
 
   useEffect(() => {
-    const testImage = new Image();
-    const nextUrl = `${cloudBaseUrl}/${lang}_${shortCode}${chapter}p${
-      page + 1
-    }.png`;
-    testImage.src = nextUrl;
-    testImage.onload = () => setNextExists(true);
-    testImage.onerror = () => setNextExists(false);
-  }, [lang, shortCode, page, chapter]);
+    const urlsToCheck = [
+      { url: imageUrl, setState: setImageExists },
+      { url: nextUrl, setState: setNextExists },
+      { url: prevUrl, setState: setPrevExists },
+      { url: nextChapterUrl, setState: setNextChapterExists },
+      { url: prevChapterUrl, setState: setPrevChapterExists },
+    ];
+
+    urlsToCheck.forEach(({ url, setState }) => {
+      const img = new Image();
+      img.src = url;
+      img.onload = () => setState(true);
+      img.onerror = () => setState(false);
+    });
+  }, [imageUrl, nextUrl, prevUrl, nextChapterUrl, prevChapterUrl]);
 
   useEffect(() => {
-    const testImage = new Image();
-    testImage.src = imageUrl;
-    testImage.onload = () => setImageExists(true);
-    testImage.onerror = () => setImageExists(false);
-  }, [imageUrl]);
+    const previousChapter = parseInt(chapter!) - 1;
+    const maxPagesToTry = 50;
+    const testPrevChapter = async () => {
+      const baseUrl = `${cloudBaseUrl}/${lang}_${shortCode}${previousChapter}p`;
+      let lastValidPage = -1;
+
+      for (let i = 0; i < maxPagesToTry; i++) {
+        const url = `${baseUrl}${i}.png`;
+        const img = new Image();
+        img.src = url;
+
+        await new Promise((resolve) => {
+          img.onload = () => {
+            lastValidPage = i;
+            resolve(null);
+          };
+          img.onerror = () => resolve(null);
+        });
+      }
+
+      if (lastValidPage >= 0) {
+        setPrevChapterExists(true);
+        setPrevChapterLastPage(lastValidPage);
+      } else {
+        setPrevChapterExists(false);
+      }
+    };
+
+    testPrevChapter();
+  }, [chapter, lang, shortCode]);
 
   const goToPage = (newPage: number) => {
+    if (newPage < 0) {
+      if (prevChapterExists && prevChapterLastPage !== null) {
+        navigate(
+          `/webcomic/${lang}/${comic}/${
+            parseInt(chapter!) - 1
+          }/${prevChapterLastPage}`
+        );
+      }
+      return;
+    }
+
+    if (!nextExists && newPage > page && nextChapterExists) {
+      navigate(`/webcomic/${lang}/${comic}/${parseInt(chapter!) + 1}/0`);
+      return;
+    }
+
     navigate(`/webcomic/${lang}/${comic}/${chapter}/${newPage}`);
   };
 
   const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.changedTouches[0].clientX;
+    touchStartX.current = e.touches[0].clientX;
+    setIsDragging(true);
   };
 
-  const handleTouchEnd = (e: React.TouchEvent) => {
-    touchEndX.current = e.changedTouches[0].clientX;
-    const delta = (touchStartX.current ?? 0) - (touchEndX.current ?? 0);
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!isDragging || touchStartX.current === null) return;
+    const currentX = e.touches[0].clientX;
+    const deltaX = currentX - touchStartX.current;
+    setDragX(deltaX);
+  };
 
-    if (delta > 50 && nextExists) {
-      goToPage(page + 1);
-    } else if (delta < -50 && page > 0) {
-      goToPage(page - 1);
+  const handleTouchEnd = () => {
+    setIsDragging(false);
+    const delta = dragX;
+
+    if (delta < -50) {
+      if (nextExists) {
+        goToPage(page + 1);
+      } else if (nextChapterExists) {
+        goToPage(page + 1);
+      }
+    } else if (delta > 50) {
+      if (page > 0) {
+        goToPage(page - 1);
+      } else if (prevChapterExists) {
+        goToPage(page - 1);
+      }
     }
+
+    setDragX(0);
+    touchStartX.current = null;
   };
 
   if (!imageExists) {
@@ -68,6 +158,7 @@ function ReadComicPage() {
       <div
         className="relative w-full max-w-3xl h-full"
         onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
         <div className="hidden md:block">
@@ -88,12 +179,46 @@ function ReadComicPage() {
             </button>
           )}
         </div>
-
-        <img
-          src={imageUrl}
-          alt={`Page ${page}`}
-          className="h-full w-full object-contain"
-        />
+        {isMobile ? (
+          <div className="md:hidden relative w-full h-full overflow-hidden">
+            <div
+              className="flex"
+              style={{
+                transform: `${
+                  prevExists
+                    ? `translateX(calc(-100% + ${dragX}px))`
+                    : `translateX(calc(${dragX}px))`
+                }`,
+              }}
+            >
+              {prevExists && (
+                <img
+                  src={prevUrl}
+                  alt={`Previous page`}
+                  className="h-full w-full object-contain flex-shrink-0"
+                />
+              )}
+              <img
+                src={imageUrl || ""}
+                alt={`Current page`}
+                className="h-full w-full object-contain flex-shrink-0"
+              />
+              {nextExists && (
+                <img
+                  src={nextUrl}
+                  alt={`Next page`}
+                  className="h-full w-full object-contain flex-shrink-0"
+                />
+              )}
+            </div>
+          </div>
+        ) : (
+          <img
+            src={imageUrl}
+            alt={`Page ${page}`}
+            className="h-0 md:h-full w-full object-contain"
+          />
+        )}
       </div>
     </div>
   );
