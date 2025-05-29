@@ -1,7 +1,8 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { ChevronRightIcon, ChevronLeftIcon } from "@heroicons/react/16/solid";
 import { userIsMobile } from "../hooks/UserIsMobile";
+import chapters from "../json/component/chaptercount.json";
 
 const cloudBaseUrl =
   "https://res.cloudinary.com/dh4jh6f21/image/upload/v1748391105";
@@ -25,24 +26,16 @@ function ReadComicPage() {
     page - 1
   }.png`;
 
+  const curChapterNumberStr = chapter!.replace(/[^0-9]/g, "");
+  const curChapterNumber = parseInt(curChapterNumberStr);
+
   const [imageExists, setImageExists] = useState(true);
   const [nextExists, setNextExists] = useState(false);
-  const [prevExists, setPrevExists] = useState(false);
   const [nextChapterExists, setNextChapterExists] = useState(false);
   const [prevChapterExists, setPrevChapterExists] = useState(false);
-  const [prevChapterLastPage, setPrevChapterLastPage] = useState<number | null>(
-    null
-  );
 
   const [dragX, setDragX] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
-
-  const nextChapterUrl = `${cloudBaseUrl}/${lang}_${shortCode}${
-    parseInt(chapter!) + 1
-  }p0.png`;
-  const prevChapterUrl = `${cloudBaseUrl}/${lang}_${shortCode}${
-    parseInt(chapter!) - 1
-  }p0.png`;
 
   const touchStartX = useRef<number | null>(null);
 
@@ -50,70 +43,76 @@ function ReadComicPage() {
     const urlsToCheck = [
       { url: imageUrl, setState: setImageExists },
       { url: nextUrl, setState: setNextExists },
-      { url: prevUrl, setState: setPrevExists },
-      { url: nextChapterUrl, setState: setNextChapterExists },
-      { url: prevChapterUrl, setState: setPrevChapterExists },
     ];
-
     urlsToCheck.forEach(({ url, setState }) => {
       const img = new Image();
       img.src = url;
       img.onload = () => setState(true);
       img.onerror = () => setState(false);
     });
-  }, [imageUrl, nextUrl, prevUrl, nextChapterUrl, prevChapterUrl]);
+  }, [imageUrl, nextUrl]);
 
   useEffect(() => {
-    const previousChapter = parseInt(chapter!) - 1;
-    const maxPagesToTry = 50;
-    const testPrevChapter = async () => {
-      const baseUrl = `${cloudBaseUrl}/${lang}_${shortCode}${previousChapter}p`;
-      let lastValidPage = -1;
+    const chapterData = (
+      chapters.ChapterCount as Record<string, { es: string; en: string }>
+    )[shortCode];
+    const totalChapters = chapterData ? parseInt(chapterData.es) : 0;
 
-      for (let i = 0; i < maxPagesToTry; i++) {
-        const url = `${baseUrl}${i}.png`;
-        const img = new Image();
-        img.src = url;
+    if (curChapterNumber < totalChapters) {
+      setNextChapterExists(true);
+    } else {
+      setNextChapterExists(false);
+    }
 
-        await new Promise((resolve) => {
-          img.onload = () => {
-            lastValidPage = i;
-            resolve(null);
-          };
-          img.onerror = () => resolve(null);
-        });
+    if (curChapterNumber > 1) {
+      setPrevChapterExists(true);
+    } else {
+      setPrevChapterExists(false);
+    }
+  }, [curChapterNumber, shortCode, chapters]);
+
+  const goToPage = useCallback(
+    (newPage: number) => {
+      if (newPage < 0) {
+        if (prevChapterExists) {
+          navigate(`/webcomic/${lang}/${comic}/${parseInt(chapter!) - 1}/15`);
+        }
+        return;
       }
 
-      if (lastValidPage >= 0) {
-        setPrevChapterExists(true);
-        setPrevChapterLastPage(lastValidPage);
-      } else {
-        setPrevChapterExists(false);
+      if (!nextExists && newPage > page && nextChapterExists) {
+        navigate(`/webcomic/${lang}/${comic}/${parseInt(chapter!) + 1}/0`);
+        return;
+      }
+      navigate(`/webcomic/${lang}/${comic}/${chapter}/${newPage}`);
+    },
+    [
+      chapter,
+      comic,
+      lang,
+      navigate,
+      nextChapterExists,
+      nextExists,
+      page,
+      prevChapterExists,
+    ]
+  );
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") {
+        goToPage(page - 1);
+      } else if (e.key === "ArrowRight") {
+        if (nextExists && page < 15) {
+          goToPage(page + 1);
+        }
       }
     };
-
-    testPrevChapter();
-  }, [chapter, lang, shortCode]);
-
-  const goToPage = (newPage: number) => {
-    if (newPage < 0) {
-      if (prevChapterExists && prevChapterLastPage !== null) {
-        navigate(
-          `/webcomic/${lang}/${comic}/${
-            parseInt(chapter!) - 1
-          }/${prevChapterLastPage}`
-        );
-      }
-      return;
-    }
-
-    if (!nextExists && newPage > page && nextChapterExists) {
-      navigate(`/webcomic/${lang}/${comic}/${parseInt(chapter!) + 1}/0`);
-      return;
-    }
-
-    navigate(`/webcomic/${lang}/${comic}/${chapter}/${newPage}`);
-  };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [page, goToPage, nextExists, nextChapterExists, prevChapterExists]);
 
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;
@@ -185,13 +184,13 @@ function ReadComicPage() {
               className="flex"
               style={{
                 transform: `${
-                  prevExists
+                  page > 0
                     ? `translateX(calc(-100% + ${dragX}px))`
                     : `translateX(calc(${dragX}px))`
                 }`,
               }}
             >
-              {prevExists && (
+              {page > 0 && (
                 <img
                   src={prevUrl}
                   alt={`Previous page`}

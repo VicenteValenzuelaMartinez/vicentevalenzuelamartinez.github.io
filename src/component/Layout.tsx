@@ -31,7 +31,7 @@ const Layout = () => {
         />
         <main
           ref={mainRef}
-          className="flex-1 overflow-auto bg-zinc-900 text-white"
+          className="flex-1 pt-15 overflow-auto bg-zinc-900 text-white"
         >
           <ScrollToTop scrollRef={mainRef} />
           <Outlet />

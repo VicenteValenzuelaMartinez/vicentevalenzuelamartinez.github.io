@@ -2,7 +2,7 @@ import {
   HomeIcon,
   AtSymbolIcon,
   InformationCircleIcon,
-  // BookOpenIcon,
+  BookOpenIcon,
 } from "@heroicons/react/24/solid";
 
 export const pageNavigation = [
@@ -18,11 +18,11 @@ export const pageNavigation = [
     href: "/contact",
     current: false,
     icon: AtSymbolIcon,
-  }
-  // {
-  //   name: "Sidebar.Webcomics",
-  //   href: "/webcomic",
-  //   current: false,
-  //   icon: BookOpenIcon,
-  // },
+  },
+  {
+    name: "Sidebar.Webcomics",
+    href: "/webcomic",
+    current: false,
+    icon: BookOpenIcon,
+  },
 ];

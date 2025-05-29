@@ -27,7 +27,7 @@ const TopBar = ({ isMobile, onToggleSidebar }: topbarProps) => {
   };
 
   return (
-    <nav className="top-0 left-0 right-0 z-50 bg-zinc-950 p-5">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-zinc-950 p-5">
       <ul className="flex justify-between items-center">
         <li className="flex space-x-4 items-center">
           {isMobile && (
