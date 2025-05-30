@@ -3,6 +3,9 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { ChevronRightIcon, ChevronLeftIcon } from "@heroicons/react/16/solid";
 import { userIsMobile } from "../hooks/UserIsMobile";
 import chapters from "../json/component/chaptercount.json";
+import { comicCodeMap } from "../utils/comicConfig";
+import ChMenu from "../component/ChapterMenu";
+import PageCount from "../component/PageCount";
 
 const cloudBaseUrl =
   "https://res.cloudinary.com/dh4jh6f21/image/upload/v1748391105";
@@ -12,9 +15,6 @@ function ReadComicPage() {
   const { lang, comic, chapter, pageNumber } = useParams();
   const navigate = useNavigate();
   const page = parseInt(pageNumber!, 10);
-  const comicCodeMap: Record<string, string> = {
-    knighttales: "kntl",
-  };
 
   const shortCode = comic ? comicCodeMap[comic] || comic : "";
   const publicId = `${lang}_${shortCode}${chapter}p${page}`;
@@ -28,16 +28,15 @@ function ReadComicPage() {
 
   const curChapterNumberStr = chapter!.replace(/[^0-9]/g, "");
   const curChapterNumber = parseInt(curChapterNumberStr);
-
   const [imageExists, setImageExists] = useState(true);
   const [nextExists, setNextExists] = useState(false);
   const [nextChapterExists, setNextChapterExists] = useState(false);
   const [prevChapterExists, setPrevChapterExists] = useState(false);
-
   const [dragX, setDragX] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
-
   const touchStartX = useRef<number | null>(null);
+
+  type LanguageCode = "en" | "es";
 
   useEffect(() => {
     const urlsToCheck = [
@@ -56,8 +55,9 @@ function ReadComicPage() {
     const chapterData = (
       chapters.ChapterCount as Record<string, { es: string; en: string }>
     )[shortCode];
-    const totalChapters = chapterData ? parseInt(chapterData.es) : 0;
-
+    const totalChapters = chapterData?.[lang as LanguageCode]
+      ? parseInt(chapterData[lang as LanguageCode])
+      : 0;
     if (curChapterNumber < totalChapters) {
       setNextChapterExists(true);
     } else {
@@ -149,13 +149,14 @@ function ReadComicPage() {
   };
 
   if (!imageExists) {
-    return <div className="text-center mt-10 text-red-500">Page not found</div>;
+    navigate("/");
   }
 
   return (
     <div className="flex flex-col items-center justify-center h-full w-full">
+      {comic && <ChMenu comicTitle={comic} />}
       <div
-        className="relative w-full max-w-3xl h-full"
+        className="relative w-full max-w-3xl h-full md:h-[90%] flex flex-col"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
@@ -164,7 +165,7 @@ function ReadComicPage() {
           {page > 0 && (
             <button
               onClick={() => goToPage(page - 1)}
-              className="absolute left-0 top-1/2 -translate-y-1/2 p-2 rounded-full shadow hover:bg-zinc-950"
+              className="absolute left-0 top-1/2 -translate-y-1/2 p-2 rounded-full shadow hover:bg-zinc-950 z-10"
             >
               <ChevronLeftIcon className="h-6 w-6" />
             </button>
@@ -172,52 +173,55 @@ function ReadComicPage() {
           {nextExists && (
             <button
               onClick={() => goToPage(page + 1)}
-              className="absolute right-0 top-1/2 -translate-y-1/2 p-2 rounded-full shadow hover:bg-zinc-950"
+              className="absolute right-0 top-1/2 -translate-y-1/2 p-2 rounded-full shadow hover:bg-zinc-950 z-10"
             >
               <ChevronRightIcon className="h-6 w-6" />
             </button>
           )}
         </div>
-        {isMobile ? (
-          <div className="md:hidden relative w-full h-full overflow-hidden">
-            <div
-              className="flex"
-              style={{
-                transform: `${
-                  page > 0
-                    ? `translateX(calc(-100% + ${dragX}px))`
-                    : `translateX(calc(${dragX}px))`
-                }`,
-              }}
-            >
-              {page > 0 && (
+        <div className="flex-grow relative overflow-hidden">
+          {isMobile ? (
+            <div className="md:hidden relative w-full h-full overflow-hidden">
+              <div
+                className="flex h-full"
+                style={{
+                  transform: `${
+                    page > 0
+                      ? `translateX(calc(-100% + ${dragX}px))`
+                      : `translateX(calc(${dragX}px))`
+                  }`,
+                }}
+              >
+                {page > 0 && (
+                  <img
+                    src={prevUrl}
+                    alt={`Previous page`}
+                    className="h-full w-full object-contain flex-shrink-0"
+                  />
+                )}
                 <img
-                  src={prevUrl}
-                  alt={`Previous page`}
+                  src={imageUrl || ""}
+                  alt={`Current page`}
                   className="h-full w-full object-contain flex-shrink-0"
                 />
-              )}
-              <img
-                src={imageUrl || ""}
-                alt={`Current page`}
-                className="h-full w-full object-contain flex-shrink-0"
-              />
-              {nextExists && (
-                <img
-                  src={nextUrl}
-                  alt={`Next page`}
-                  className="h-full w-full object-contain flex-shrink-0"
-                />
-              )}
+                {nextExists && (
+                  <img
+                    src={nextUrl}
+                    alt={`Next page`}
+                    className="h-full w-full object-contain flex-shrink-0"
+                  />
+                )}
+              </div>
             </div>
-          </div>
-        ) : (
-          <img
-            src={imageUrl}
-            alt={`Page ${page}`}
-            className="h-0 md:h-full w-full object-contain"
-          />
-        )}
+          ) : (
+            <img
+              src={imageUrl}
+              alt={`Page ${page}`}
+              className="h-full w-full object-contain"
+            />
+          )}
+        </div>
+        <PageCount currentPageNumber={page} />
       </div>
     </div>
   );

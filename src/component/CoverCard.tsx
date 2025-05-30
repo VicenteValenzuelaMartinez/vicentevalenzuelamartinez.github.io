@@ -16,12 +16,13 @@ const CoverCard = ({ title, image, imageOnHover, href }: coverProps) => {
       >
         <img
           src={image}
-          alt=""
+          loading="lazy"
+          alt={title || "Comic Cover"}
           className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300 opacity-100 group-hover:opacity-0"
         />
         <img
           src={imageOnHover}
-          alt=""
+          alt={title ? `${title} cover on hover` : "Comic Cover on hover"}
           className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300 opacity-0 group-hover:opacity-100"
         />
       </Link>

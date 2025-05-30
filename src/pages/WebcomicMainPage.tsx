@@ -6,9 +6,9 @@ function WebcomicMainPage() {
       <div className="flex flex-wrap justify-center gap-15">
         <CoverCard
           image="covers/unarmedKnight.webp"
-          imageOnHover="covers/unarmedKnightBlood.webp"
-          title="Knight Tales"
-          href="/webcomic/es/knighttales/ch1/0" 
+          imageOnHover="covers/unarmedKnightHover.webp"
+          title="Knight Tales (ES)"
+          href="/webcomic/es/knighttales/ch1/0"
         />
       </div>
     </div>
