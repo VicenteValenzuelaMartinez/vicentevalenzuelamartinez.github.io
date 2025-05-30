@@ -125,5 +125,10 @@
     "Email": "Email Address",
     "EmailAddress": "valenzuelamartinezvicente@gmail.com",
     "SocialMedia": "Social Media"
+  },
+  "Webcomic":{
+    "Chapter": "Chapter",
+    "Page": "Page",
+    "Cover": "Cover"
   }
 }
