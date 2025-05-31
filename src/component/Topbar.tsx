@@ -18,8 +18,8 @@ const TopBar = ({ isMobile, onToggleSidebar }: topbarProps) => {
   );
 
   const title = match(location.pathname)
-    .with("/", () => "Vincent's Factory")
-    .otherwise(() => current?.name ?? "Vincent's Factory");
+    .with("/", () => "Portafolios Vicente")
+    .otherwise(() => current?.name ?? "Portafolios Vicente");
 
   const toggleLanguage = () => {
     const newLang = i18n.language === "en" ? "es" : "en";

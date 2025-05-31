@@ -26,9 +26,9 @@ function About() {
         </div>
         <div className="p-4 md:w-1/2 flex items-center justify-center">
           <img
-            src="/aboutme.webp"
+            src="/aboutme.jpeg"
             alt="me"
-            className="max-w-full h-auto rounded-md"
+            className="max-w-full h-full rounded-full border border-black border-3"
           />
         </div>
       </div>

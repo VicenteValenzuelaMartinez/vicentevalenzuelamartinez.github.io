@@ -28,7 +28,7 @@ const SidebarMenu = ({ isMobile, isSidebarOpen, setSidebarOpen }: sidebarProps) 
       <div
         onMouseEnter={() => !isMobile && setIsHovered(true)}
         onMouseLeave={() => !isMobile && setIsHovered(false)}
-        className={`fixed top-[4rem] left-0 h-[calc(100vh-4rem)] z-40 bg-sky-950 text-white transition-all duration-300 overflow-hidden ${
+        className={`fixed top-[4rem] left-0 h-[calc(100vh-4rem)] z-40 bg-gray-800 text-white transition-all duration-300 overflow-hidden ${
           showSidebar ? "w-64" : "md:w-16 w-0"
         }`}
       >
